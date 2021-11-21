@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Typography from '@material-ui/core/Typography';
+import { Auth } from 'aws-amplify'
 
 
 function DashboardLayout(props: PropsWithChildren<{}>) {
@@ -15,6 +16,7 @@ function DashboardLayout(props: PropsWithChildren<{}>) {
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   return (
     <div>
       <AppBar position="static">
@@ -55,7 +57,7 @@ function DashboardLayout(props: PropsWithChildren<{}>) {
                 setAnchorEl(null)
               }}
             >
-              <MenuItem onClick={() => {}}>Logout</MenuItem>
+              <MenuItem onClick={onLogout}>Logout</MenuItem>
             </Menu>
           </div>
         </Container>
@@ -69,6 +71,10 @@ function DashboardLayout(props: PropsWithChildren<{}>) {
       </main>
     </div>
   )
+
+  function onLogout() {
+    Auth.signOut()
+  }
 }
 
 export default DashboardLayout
