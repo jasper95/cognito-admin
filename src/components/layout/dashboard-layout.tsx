@@ -61,8 +61,10 @@ function DashboardLayout(props: PropsWithChildren<{}>) {
         </Container>
       </AppBar>
       <main>
-        <Container maxWidth="lg" className='p-4'>
-          {props.children}
+        <Container component='div' maxWidth="lg" className='p-4'>
+          <div>
+            {props.children}
+          </div>
         </Container>
       </main>
     </div>

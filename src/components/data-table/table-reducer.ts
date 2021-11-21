@@ -51,7 +51,7 @@ export default function tableReducer<T extends Identifiable>(state: TableState, 
     if (index === 0) {
       arr = checked ? rows.map((e) => e.id) : [];
     } else {
-      const { id } = rows[index - 1];
+      const { id } = rows[index - 1] as T;
       arr = checked ? [...selected, id] : selected.filter((e) => e !== id);
     }
     return { ...state, [key]: arr };

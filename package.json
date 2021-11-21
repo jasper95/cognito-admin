@@ -5,7 +5,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cdk": "cdk",
+    "deploy": "ts-node bin.ts"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "1.2.26",
@@ -28,14 +30,25 @@
     "zustand": "^3.6.5"
   },
   "devDependencies": {
+    "@aws-cdk/aws-cloudfront-origins": "1.133.0",
+    "@aws-cdk/aws-lambda": "1.133.0",
+    "@aws-cdk/aws-lambda-event-sources": "1.133.0",
+    "@aws-cdk/aws-route53-targets": "1.133.0",
+    "@aws-cdk/aws-s3-deployment": "1.133.0",
+    "@aws-cdk/core": "1.133.0",
+    "@sls-next/cdk-construct": "3.6.0",
+    "@sls-next/lambda-at-edge": "3.6.0",
     "@types/js-search": "^1.4.0",
     "@types/node": "16.11.9",
     "@types/react": "17.0.35",
     "autoprefixer": "^10.4.0",
+    "aws-cdk": "1.133.0",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "install-peers": "1.0.3",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19",
+    "ts-node": "10.4.0",
     "typescript": "4.5.2"
   }
 }
