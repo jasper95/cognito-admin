@@ -17,6 +17,7 @@ import withAuthenticator from '@/shared/hocs/withAuthenticator';
 import DashboardLayout from '@/components/layout/dashboard-layout';
 import Breadcrumbs from '@/components/breadcrumbs';
 import ErrorPage from '@/components/error-page';
+import { useNotificationStore } from '@/shared/stores/notification';
 
 
 const AddToGroupDialog = dynamic(() => import('@/components/user-details/add-to-group-dialog'));
@@ -29,6 +30,7 @@ function UserDetailsPage() {
   const { data: user, isValidating, mutate } = useSwr<UserDetails>(() => username ? `/api/users/${decodeURIComponent(username)}` : null, fetcher)
   const { data: groups = [], mutate: mutateGroups } = useSwr<GroupListType>(username ? `/api/users/${decodeURIComponent(username)}/groups` : null, fetcher)
   const isLoading = isValidating && !user
+  const { addNotification } = useNotificationStore()
   
   if(!user && !isValidating) {
     return <ErrorPage title='Not found' statusCode={400} />
@@ -135,10 +137,11 @@ function UserDetailsPage() {
 
   async function onToggleEnableDisabled() {
     toggleDialogLoading();
+    const enable = !user?.Enabled
     await fetch('/api/users/enable', {
       body: JSON.stringify({
         username: user?.Username,
-        enable: !user?.Enabled
+        enable
       }),
       method: 'POST',
       headers: {
@@ -150,6 +153,7 @@ function UserDetailsPage() {
       Enabled: !user?.Enabled,
     }, false)
     hideDialog();
+    addNotification({ message: enable ? 'User successfully enabled' : 'User successfully disabled', type: 'success' })
   }
 
   async function onAddToGroup(data: IGroupPayload) {
@@ -166,6 +170,7 @@ function UserDetailsPage() {
     })
     mutateGroups(undefined, true)
     hideDialog();
+    addNotification({ message: 'User successfully added to group', type: 'success' })
   }
 
   async function onResetUserPassword() {
@@ -181,6 +186,7 @@ function UserDetailsPage() {
     })
     mutate(undefined, true)
     hideDialog();
+    addNotification({ message: 'Password reset successfully required for user', type: 'success' })
   }
 
   function getUserGroupsDisplay() {

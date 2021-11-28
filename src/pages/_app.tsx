@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '@/shared/theme';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import DialogContainer from '@/components/layout/dialog-container';
+import NotificationContainer from '@/components/layout/notification-container';
 import { SnackbarProvider } from 'notistack';
 
 import Amplify from 'aws-amplify';
@@ -40,6 +41,7 @@ export default function MyApp(props: AppProps) {
             <Component {...pageProps} />
           </StylesProvider>
           <DialogContainer />
+          <NotificationContainer/>
         </ThemeProvider>
       </SnackbarProvider>
     </React.Fragment>

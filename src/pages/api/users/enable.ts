@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { body } = req
-  console.log('body: ', body);
   const params = {
     Username: body.username,
     UserPoolId: process.env.AWS_USER_POOL_ID ?? ''

@@ -17,6 +17,7 @@
     "@types/lodash": "^4.14.177",
     "aws-amplify": "^4.3.8",
     "aws-sdk": "^2.1033.0",
+    "axios": "^0.24.0",
     "date-fns": "^2.26.0",
     "formik": "^2.2.9",
     "js-search": "^2.0.0",
@@ -25,6 +26,7 @@
     "notistack": "^1.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-query": "^3.33.6",
     "swr": "^1.0.1",
     "yup": "^0.32.11",
     "zustand": "^3.6.5"
