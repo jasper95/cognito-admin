@@ -2,14 +2,10 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
+import { Notification as INotification } from '@/shared/stores/notification'
 
 export type NotificationProps = {
-  notification: {
-    id: string;
-    type: AlertProps['severity'];
-    title: string;
-    message?: string;
-  };
+  notification: INotification;
   onDismiss: (id: string) => void;
 };
 

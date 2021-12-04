@@ -24,7 +24,6 @@ axios.interceptors.response.use(
     const message = error.response?.data?.message || error.message;
     useNotificationStore.getState().addNotification({
       type: 'error',
-      title: 'Error',
       message,
     });
 
